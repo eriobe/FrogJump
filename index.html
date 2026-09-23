@@ -1,9 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Jungle Frog</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body></body>
+  <body>
+    <main class="game-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Miun</p>
+          <h1>Jungle Frog</h1>
+          <p class="subtitle">Hjälp grodan att nå nästa näckros.</p>
+        </div>
+        <div class="level-card">
+          <span>Nivå</span><strong id="levelNumber">1</strong>
+        </div>
+      </header>
+      <section class="game-panel" aria-label="Spelområde">
+        <canvas id="gameCanvas" width="1100" height="620"
+          >Din webbläsare stöder inte canvas.</canvas
+        >
+      </section>
+      <section class="controls" aria-label="Spelkontroller">
+        <div class="prediction" aria-live="polite">
+          <span>Spelmotor</span>
+          <strong id="statusText">Spelmotorn vän tar...</strong>
+        </div>
+        <button id="jumpButton" type="button">HOPPA!</button>
+      </section>
+    </main>
+    <script src="js/physics.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/gameMap.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/input.js"></script>
+  </body>
 </html>
