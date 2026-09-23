@@ -1,5 +1,7 @@
 const Physics = {
   defaultGravity: 9.82,
+  defaultAirResistance: 0,
+  airResistanceWhenEnabled: 0.35,
   pixelsPerMeter: 60,
 
   getInitialVelocity(angleDegrees, startSpeed) {
@@ -12,12 +14,33 @@ const Physics = {
     };
   },
 
-  getPosition(start, velocity, time, gravity = this.defaultGravity) {
+  getPosition(
+    start,
+    velocity,
+    time,
+    gravity = this.defaultGravity,
+    airResistance = this.defaultAirResistance,
+  ) {
+    const gravityPixels = gravity * this.pixelsPerMeter;
+
+    if (airResistance <= 0) {
+      return {
+        x: start.x + velocity.x * time,
+        y: start.y + velocity.y * time + 0.5 * gravityPixels * time * time,
+      };
+    }
+
+    // Enkel linjär luftmotståndsmodell: a_luft = -k * v.
+    const k = airResistance;
+    const damping = Math.exp(-k * time);
+    const oneMinusDamping = 1 - damping;
+
     return {
-      x: start.x + velocity.x * time,
+      x: start.x + (velocity.x / k) * oneMinusDamping,
       y:
-        start.y + velocity.y * time +
-        0.5 * gravity * this.pixelsPerMeter * time * time,
+        start.y +
+        ((velocity.y - gravityPixels / k) / k) * oneMinusDamping +
+        (gravityPixels / k) * time,
     };
   },
 

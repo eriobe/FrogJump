@@ -235,3 +235,37 @@ h1 {
     width: 100%;
   }
 }
+
+.air-resistance-control {
+  margin: 0;
+  padding: 8px 12px 9px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: grid;
+  gap: 4px;
+  flex: 0 0 auto;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+.air-resistance-control legend {
+  padding: 0 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.air-resistance-control label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.air-resistance-control input {
+  margin: 0;
+  accent-color: var(--accent);
+}
+@media (max-width: 760px) {
+  .air-resistance-control {
+    width: 100%;
+  }
+}

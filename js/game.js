@@ -29,6 +29,7 @@ const Game = {
       this.velocity,
       this.jumpTime,
       Input.gravity,
+      Input.airResistance,
     );
 
     if (
