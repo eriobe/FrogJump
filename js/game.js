@@ -28,6 +28,7 @@ const Game = {
       GameMap.frogStart,
       this.velocity,
       this.jumpTime,
+      Input.gravity,
     );
 
     if (

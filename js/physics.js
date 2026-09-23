@@ -1,5 +1,5 @@
 const Physics = {
-  gravity: 9.81,
+  defaultGravity: 9.82,
   pixelsPerMeter: 60,
 
   getInitialVelocity(angleDegrees, startSpeed) {
@@ -12,12 +12,12 @@ const Physics = {
     };
   },
 
-  getPosition(start, velocity, time) {
+  getPosition(start, velocity, time, gravity = this.defaultGravity) {
     return {
       x: start.x + velocity.x * time,
       y:
         start.y + velocity.y * time +
-        0.5 * this.gravity * this.pixelsPerMeter * time * time,
+        0.5 * gravity * this.pixelsPerMeter * time * time,
     };
   },
 
