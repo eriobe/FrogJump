@@ -28,6 +28,30 @@
           <span>Spelmotor</span>
           <strong id="statusText">Spelmotorn vän tar...</strong>
         </div>
+        <div class="jump-settings" aria-label="Hoppinställningar">
+          <label class="slider-control" for="angleSlider">
+            <span>Vinkel <output id="angleValue">45°</output></span>
+            <input
+              id="angleSlider"
+              type="range"
+              min="10"
+              max="80"
+              step="1"
+              value="45"
+            />
+          </label>
+          <label class="slider-control" for="speedSlider">
+            <span>Starthastighet <output id="speedValue">9 m/s</output></span>
+            <input
+              id="speedSlider"
+              type="range"
+              min="4"
+              max="14"
+              step="1"
+              value="9"
+            />
+          </label>
+        </div>
         <button id="jumpButton" type="button">HOPPA!</button>
       </section>
     </main>

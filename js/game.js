@@ -13,7 +13,7 @@ const Game = {
   jump() {
     if (this.isJumping) return;
     this.frog = { ...GameMap.frogStart };
-    this.velocity = Physics.getInitialVelocity();
+    this.velocity = Physics.getInitialVelocity(Input.angle, Input.startSpeed);
     this.jumpTime = 0;
     this.isJumping = true;
     UI.setStatus("Grodan hoppar...");
