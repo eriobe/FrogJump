@@ -21,17 +21,34 @@ const Game = {
 
   update(deltaTime) {
     if (!this.isJumping) return;
+
+    const previousPosition = { ...this.frog };
     this.jumpTime += deltaTime;
     this.frog = Physics.getPosition(
       GameMap.frogStart,
       this.velocity,
       this.jumpTime,
     );
+
+    if (
+      Physics.hasLandedOnTarget(
+        previousPosition,
+        this.frog,
+        GameMap.target,
+      )
+    ) {
+      this.frog.y = GameMap.target.y - GameMap.target.radius * 0.72 - 38;
+      this.isJumping = false;
+      UI.addScore();
+      UI.setStatus("Bra! Grodan landade på näckrosen.");
+      return;
+    }
+
     if (this.frog.y >= GameMap.frogStart.y) {
       this.frog.y = GameMap.frogStart.y;
       this.frog.x = Math.min(this.frog.x, GameMap.width - 40);
       this.isJumping = false;
-      UI.setStatus("Hoppet klart. Vad behöver vi ändra?");
+      UI.setStatus("Hoppet klart. Försök igen!");
     }
   },
 
